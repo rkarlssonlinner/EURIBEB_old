@@ -1,6 +1,5 @@
 ##Code to install EasyQC on Cartesius
 ##You can run the following code from any of your directories
-##Aysu comments better than Richard
 
 module load c/intel
 module load fortran/intel
