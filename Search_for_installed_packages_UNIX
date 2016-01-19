@@ -1,0 +1,10 @@
+##This enables you to search for installed programs/packages
+rpm -qa | grep <input search word>
+
+##Example:
+#$ rpm -qa | grep python
+#python-simplejson-2.0.9-3.1.el6.x86_64
+#python-argparse-1.2.1-2.1.el6.noarch
+#python-ethtool-0.6-5.el6.x86_64
+#python-imaging-1.1.6-19.el6.x86_64
+# ... 
