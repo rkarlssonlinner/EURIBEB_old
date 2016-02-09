@@ -1,0 +1,19 @@
+##LocusZoom v1.3 is now installed on Cartesius at /lustre4/0/koelling/tools/locuszoom and includes the Nov 2014 1kG reference panel
+
+##Example code for creating a plot from meta-analysis results that are saved under /lustre4/0/koelling/tools/locuszoom/examples
+cd /lustre4/0/koelling/tools/locuszoom/examples
+export PATH=$PATH:/lustre4/0/koelling/tools/locuszoom/bin
+export PATH=$PATH:/lustre4/0/koelling/tools/samtools-1.3/htslib-1.3
+module load python/2.7.9
+module load R
+locuszoom --metal SWB_1kG_ldscGC_31012016.meta --markercol rsID --refsnp rs6579956 --flank 500kb --pop EUR --build hg19 --source 1000G_Nov2014 title="SWB SNP rs6579956" 
+locuszoom --metal SWB_1kG_ldscGC_31012016.meta --markercol rsID --refsnp rs13185787 --flank 1000kb --pop EUR --build hg19 --source 1000G_Nov2014  --prefix 1Mbwindow_GWAS_cat title="SWB SNP rs13185787"
+
+##Example command using a batch mode specification file
+locuszoom --metal SWB_1kG_ldscGC_31012016.meta --hitspec LocusZoomPlots_SWB_1kG.txt --pop EUR --build hg19 --source 1000G_Nov2014
+
+##Example batch mode specification file
+#snp	chr	start	end	flank	run	m2zargs
+#rs3756290	5	NA	NA	500kb	yes	title="SWB rs3756290 HapMap2"
+#rs2075677	20	NA	NA	500kb	yes	title="SWB rs2075677 HapMap2"
+#rs4958581	5	NA	NA	500kb	yes	title="SWB rs4958581 HapMap2"
