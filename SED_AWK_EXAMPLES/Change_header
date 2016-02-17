@@ -1,0 +1,12 @@
+##These commands can be used for changing the headers
+
+
+##1. Use head -n1 to get the old headers 
+head -n1 <file path>
+
+##2. Remove the whole old first line (row), -i does this on the file itself, no need to specify new output file
+sed -i '1d'
+
+##3. Insert correct header, use <space> for a space, or \t for TAB, see example:
+## sed -i '1i SNP\tcptid\tChr\tposition\tEFFECT_ALLELE\tOTHER_ALLELE\tEAF\tIMPUTED\tIMPUTATION\tBETA\tSE\tZ\tPVAL\tN\tHWE' <file path>
+sed -i '1i <headers>' <file path>
