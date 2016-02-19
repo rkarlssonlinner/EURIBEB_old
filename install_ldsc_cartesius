@@ -1,0 +1,51 @@
+# installing ldsc on cartesius #
+cd $HOME
+
+#download ldsc
+git clone https://github.com/bulik/ldsc.git
+
+# ldsc works with python versions <3.0. the default version on cartesius (i.e. if you <module load python> without specifying a version) is 2.7.9 (use <module avail python>
+# to check this out)
+# of the required packages, only bitarray is not installed (see https://userinfo.surfsara.nl/systems/cartesius/software/python). download and install it:
+
+#first, make a directory for your python packages (i.e. library)
+mkdir pythonpackages
+
+#cd
+cd $HOME/pythonpackages
+
+#download bitarray
+wget https://pypi.python.org/packages/source/b/bitarray/bitarray-0.8.1.tar.gz
+
+#untar it
+tar -xzvf bitarray-0.8.1.tar.gz
+
+#tell python where to look for packages (this command needs to be re-run every session, before loading python! alternatively, add it to your login (.bashrc) file).
+export PYTHONPATH=$HOME/pythonpackages/lib/python:$PYTHONPATH
+
+#load python
+module load python
+
+#cd back to home
+cd $HOME
+
+#install packages from your library (in this case, only bitarray is there)
+python setup.py install --home=$HOME/pythonpackages
+
+# check if package is installed -- no error message should pop up. If you get no response from <import bitarray>, it is installed properly.
+python
+import bitarray
+exit()
+
+# check if ldsc works
+cd $HOME/ldsc
+python ldsc.py -h
+python munge_sumstats.py -h
+
+# get ldscore file (eur)
+wget www.broadinstitute.org/~bulik/eur_ldscores/eur_w_ld_chr.tar.bz2
+tar -jxvf eur_w_ld_chr.tar.bz2
+
+# get partioned ldscore files
+# !!!WARNING!!! skip this step if you don't plan to partition heritability. downloading these files takes 3+ hours
+# wget -r --no-parent https://data.broadinstitute.org/alkesgroup/LDSCORE/
