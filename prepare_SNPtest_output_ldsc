@@ -8,8 +8,11 @@ mkdir BACKUP
 mv *.out ./BACKUP
 
 # remember that SNPtest gives separate output for each chromosome.
-# in this case, I'm assuming that the all *.out files in the folder are the ones you want to prepare.
-# If this is not the case, write a loop that repeats the edits for each chromosome.
+# in this case, I'm assuming that the !!ALL!! *.out files in the folder are raw output (!!) and that you want
+# prepare them for LDSC.
+# If this is not the case (!!e.g. if the *.out files are not raw and already prepared for ldsc format!!),
+# you could write a loop that repeats the edits for the files you'd particularly like to change.
+# alternatively, move the raw output to a different folder.
 
 ## remove headers (which consist of 16 lines) ##
 sed -i '1,16d' *.out
@@ -17,7 +20,7 @@ sed -i '1,16d' *.out
 ## remove tails ##
 sed -i '$d' *.out
 
-## cut out relevant columns ##
+## cut out relevant columns (! change file name as needed !)##
 for i in {1..22}
 do
 cut -d " " -f 2,3,4,5,6,9,18,19,21,23,24 UKB_MR_chr${i}_maf005_info30_eur_snptest_expected_order_chunk2500_resid.out > UKB_MR_chr${i}_maf005_info30_eur_snptest_expected_order_chunk2500_resid_selection.out
