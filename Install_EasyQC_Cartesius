@@ -1,6 +1,7 @@
 ##Code to install EasyQC on Cartesius
 ##You can run the following code from any of your directories
 
+# note from fleur: c/intel and fortran/intel are already loaded by default on cartesius, use the <module list> command to check that out.
 module load c/intel
 module load fortran/intel
 module load R
