@@ -32,8 +32,8 @@ module load python
 cd $HOME
 
 # install packages from your library (in this case, only bitarray is there)
-##Richard: Gives error if not executed in the same folder as install dependencies. Therefore might need #cd ./pythonpackages/bitarray-0.8.1/
-#cd ./pythonpackages/bitarray-0.8.1/
+##Richard: Gives error if not executed in the same folder as install dependencies.
+cd ./pythonpackages/bitarray-0.8.1/
 python setup.py install --home=$HOME/pythonpackages
 
 # check if package is installed -- no error message should pop up. If you get no response from <import bitarray>, 
